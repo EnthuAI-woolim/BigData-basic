@@ -461,7 +461,7 @@ exam %>%
   mutate(test = ifelse(science >= 60, 'pass','fail')) %>%
   head
 
-exam <- read.csv('csv_exam.csv')
+exam <- read.csv('R_Data/csv_exam.csv')
 exam
 
 ## 추가한 파생변수를 코드에 바로 활용하기
