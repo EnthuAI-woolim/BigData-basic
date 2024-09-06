@@ -1,6 +1,8 @@
 ' 240803 강의 자료 '
 
 '
+현재 줄을 자동으로 복사 : ctrl + shift + d
+현재 줄 삭제 : ctrl + d
 실행 단축키 : ctrl + Enter
 되돌리기 : ctrl + z
 전체 블록 선택 : ctrl + a

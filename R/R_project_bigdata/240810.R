@@ -168,7 +168,7 @@ df_exam <- read_excel('C:/KoreaIT_bigdata/R/R_project_bigdata/R_Data/excel_exam.
 df_exam
 
 ### 엑셀 파일 첫 번째 행이 변수명이 아닌 경우
-df_exam_novar <- read_excel('excel_exam_novar.xlsx', col_names = F)
+df_exam_novar <- read_excel('R_Data/excel_exam_novar.xlsx', col_names = F)
 df_exam_novar
 
 ### 엑셀 파일에 시트가 여러개 있는 경우
@@ -206,7 +206,7 @@ write.csv(df_midterm, file='df_midterm_pass.csv')
 '
 
 ### 데이터 로드
-exam <- read.csv('csv_exam.csv')
+exam <- read.csv('R_Data/csv_exam.csv')
 
 ## head() 데이터 앞 부분 확인
 head(exam) # 앞에서부터 6행까지 출력
@@ -336,7 +336,7 @@ qplot(mpg$grade)
 
 ### 조건에 맞는 데이터만 추출 - filter()
 library(dplyr)
-exam <- read.csv('csv_exam.csv')
+exam <- read.csv('R_Data/csv_exam.csv')
 exam
 
 ## exam에서 class가 1인 경우만 추출하여 출력

@@ -287,7 +287,7 @@ library(ggplot2) # 시각화
 library(readxl) # 엑셀 파일 로드
 
 ### 데이터 준비
-raw_welfare <- read.spss(file='Koweps_hpc10_2015_beta1.sav',
+raw_welfare <- read.spss(file='R_Data/Koweps_hpc10_2015_beta1.sav',
                          to.data.frame = T)
 ### 복사본 만들기
 welfare <- raw_welfare
