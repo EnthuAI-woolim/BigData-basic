@@ -45,7 +45,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 ### 데이터 불러오기
-path = 'C:/Data/'
+path = 'W:/Study/BigData/KoreaIT/python/python_project_bigdata/pythonData/'
 raw_welfare = pd.read_spss(path + 'Koweps_hpwc14_2019_beta2.sav')
 
 ### 복사본 생성
@@ -105,7 +105,8 @@ a = welfare['income'].describe()
 # print(a)
 
 # 만약에 9999 값이 있다면 ? -> 이상치로 간주하고 결측 처리
-# welfare['income'] = np.where(welfare['income'] == 9999, np.nan, welfare['income'])
+# 1. welfare['income'] = np.where(welfare['income'] == 9999, np.nan, welfare['income'])
+# 2. welfare['income'] = np.where((welfare['income'] > 0) & (welfare['income'] < 9999), welfare['income'], np.nan)
 # b = welfare['income'].isna().sum()
 # print(b)
 
@@ -136,7 +137,7 @@ a = welfare['birth'].describe() # 이상치 확인
 
 a = welfare['birth'].isna().sum() # 결측치 개수 파악
 # print(a)
-welfare['birth'] = np.where(welfare['birth'] == 9999, np.nan, welfare['birth'])
+welfare['birth'] = np.where((welfare['birth'] >= 1900) & (welfare['birth'] <= 2014), welfare['birth'], np.nan)
 a = welfare['birth'].isna().sum() # 결측치 개수 파악
 # print(a)
 
@@ -167,6 +168,7 @@ a = welfare['ageg'].value_counts()
 
 # 빈도 막대 그래프 생성
 # sns.countplot(data=welfare, x='ageg')
+# sns.countplot(x=welfare['ageg'])
 # plt.show()
 
 ### 연령대에 따른 월급 차이 분석
@@ -530,13 +532,13 @@ moon = re.sub('[^가-힣]', ' ', moon)
 # 3. 명사 추출
 # hannanum 만들기
 import konlpy
-hannanum = konlpy.tag.Hannanum()
+hannanum = konlpy.tag.Hannanum() # 한나눔 -> 한글 나눔
 
 # 추출
 h = hannanum.nouns('대한민국의 영토는 한반도와 그 부속도서로 한다.')
 # print(h)
 
-# 연설문에서 추출
+# 연설문에서 명사 추출
 nouns = hannanum.nouns(moon)
 # print(nouns)
 
@@ -553,7 +555,7 @@ df_word['count'] = df_word['word'].str.len()
 # 6. 두 글자 이상 단어만 남기기
 df_word = df_word.query('count >= 2')
 a = df_word.sort_values('count')
-# print(a)
+print(a)
 
 
 # 7. 단어 빈도 구하기
@@ -584,6 +586,7 @@ plt.rcParams.update({'font.family' : 'Malgun Gothic',
 # 워드 클라우드 패키지 설치 : pip install wordcloud
 
 # 1. 워드 클라우드에 사용한 한글 폰트 지정
+# 경로: C:\Windows\Fonts에서 원하는 폰트의 속성들어가서 파일명 복사하기
 font = 'H2SA1M.TTF'
 
 # 2. 단어와 빈도를 담은 딕셔너리 만들기 - 단어가 key, 빈도가 value 로 구성
